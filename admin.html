@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>闲聊数码站 - 后台管理</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="css/admin.css">
+  <style>
+    .brand-link img {
+      height: 30px;
+      margin-right: 0.5rem;
+    }
+
+    .brand-text {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    /* 确保iframe填满剩余空间 */
+    #content-frame {
+      border: 0;
+      width: 100%;
+      /* 计算高度：100%视口高度 - 顶部导航高度(57px) - 页脚高度(51px) */
+      height: calc(100vh - 57px - 51px);
+    }
+
+    .content-wrapper,
+    .content,
+    .container-fluid {
+      padding: 0;
+    }
+
+    .content-header {
+      padding: 15px 0.5rem;
+    }
+  </style>
+
+</head>
+
+<body class="hold-transition sidebar-mini">
+  <div class="wrapper">
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
+              class="fas fa-bars"></i></a></li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown user-menu">
+          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+            <img src="https://adminlte.io/themes/v3/dist/img/user2-160x160.jpg"
+              class="user-image img-circle elevation-2" alt="User Image">
+            <span class="d-none d-md-inline" id="username"></span>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+            <li class="user-header bg-primary">
+              <img src="https://adminlte.io/themes/v3/dist/img/user2-160x160.jpg" class="img-circle elevation-2"
+                alt="User Image">
+              <p><span id="username-full"></span><small id="user-role-badge"></small></p>
+            </li>
+            <li class="user-footer">
+              <a href="profile.html" target="content-frame" class="btn btn-default btn-flat">个人资料</a>
+              <a href="#" class="btn btn-default btn-flat float-right" id="admin-logout">退出登录</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+      <a href="admin.html" class="brand-link">
+        <img src="images/logo.png" alt="Logo" class="brand-image">
+        <span class="brand-text font-weight-light">闲聊数码站</span>
+      </a>
+      <div class="sidebar">
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+          <div class="image"><img src="https://adminlte.io/themes/v3/dist/img/user2-160x160.jpg"
+              class="img-circle elevation-2" alt="User Image"></div>
+          <div class="info"><a href="#" class="d-block" id="sidebar-username"></a></div>
+        </div>
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <li class="nav-item" data-permission="dashboard.html"><a href="dashboard.html" class="nav-link active"
+                target="content-frame"><i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>控制面板</p>
+              </a></li>
+            <li class="nav-item has-treeview" data-permission="article_management.html"><a href="#" class="nav-link">
+                <i class="nav-icon fas fa-copy"></i>
+                <p>文章管理<i class="right fas fa-angle-left"></i></p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item"><a href="article_management.html?category=all" class="nav-link"
+                    target="content-frame"><i class="far fa-circle nav-icon"></i>
+                    <p>所有文章</p>
+                  </a></li>
+                <li class="nav-item"><a href="article_management.html?category=phone" class="nav-link"
+                    target="content-frame"><i class="far fa-circle nav-icon"></i>
+                    <p>手机文章</p>
+                  </a></li>
+                <li class="nav-item"><a href="article_management.html?category=laptop" class="nav-link"
+                    target="content-frame"><i class="far fa-circle nav-icon"></i>
+                    <p>笔记本文章</p>
+                  </a></li>
+                <li class="nav-item"><a href="article_management.html?category=pods" class="nav-link"
+                    target="content-frame"><i class="far fa-circle nav-icon"></i>
+                    <p>耳机文章</p>
+                  </a></li>
+                <li class="nav-item"><a href="article_management.html?category=favorite" class="nav-link"
+                    target="content-frame"><i class="far fa-circle nav-icon"></i>
+                    <p>收藏列表</p>
+                  </a></li>
+              </ul>
+            </li>
+            <li class="nav-item admin-only" data-permission="user_management.html"><a href="user_management.html"
+                class="nav-link" target="content-frame"><i class="nav-icon fas fa-users"></i>
+                <p>用户管理</p>
+              </a></li>
+            <li class="nav-item" data-permission="theme_settings.html"><a href="theme_settings.html" class="nav-link"
+                target="content-frame"><i class="nav-icon fas fa-cog"></i>
+                <p>系统设置</p>
+              </a></li>
+          </ul>
+        </nav>
+      </div>
+    </aside>
+
+    <div class="content-wrapper">
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0">控制面板</h1>
+            </div>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="admin.html">首页</a></li>
+                <li class="breadcrumb-item active">控制面板</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="content">
+        <div class="container-fluid">
+          <iframe id="content-frame" name="content-frame" src="dashboard.html" title="内容区域"></iframe>
+        </div>
+      </div>
+    </div>
+    <footer class="main-footer"><strong>Copyright &copy; 2024 <a href="#">闲聊数码站</a>.</strong> All rights reserved.
+    </footer>
+  </div>
+
+  <script src="js/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
+  <script src="js/js.js"></script>
+  <script src="js/admin.js"></script>
+  <!-- <script src="js/admin-new.js"></script> -->
+
+  <div id="custom-popup" class="popup">
+    <div class="popup-content">
+      <p id="popup-message">这是提示信息</p>
+      <button id="popup-close">确定</button>
+    </div>
+  </div>
+
+</body>
+
+</html>
+</body>
+
+</html>

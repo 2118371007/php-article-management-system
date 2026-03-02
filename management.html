@@ -1,0 +1,281 @@
+﻿<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>管理</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<script src="js/jquery.min.js"></script>
+	<!-- 引入 Plupload 核心库 -->
+	<script src="js/plupload.full.min.js"></script>
+	<!-- 引入js -->
+	<script src="js/js.js"></script>
+	<script src="js/articlesubmit.js"></script>
+	<script src="js/loadArticles.js"></script>
+
+	<script src="js/management.js"></script>
+
+	
+	
+	<!-- 阿里巴巴矢量图标 -->
+	<link rel="stylesheet" href="//at.alicdn.com/t/c/font_3819262_sw3qiuugttc.css">
+	<!-- 引入css -->
+	<link rel="stylesheet" href="/css/css.css">
+	<link type="text/css" rel="stylesheet" href="css/JFFormStyle-1.css" />
+	<!-- <script type="text/javascript" src="js/JFCore.js"></script> -->
+	<script type="text/javascript" src="js/JFForms.js"></script>
+	<!-- Set here the key for your domain in order to hide the watermark on the web server -->
+	<!-- <script type="text/javascript">
+		(function () {
+			JC.init({
+				domainKey: ''
+			});
+		})();
+	</script> -->
+
+	<!--nav-->
+	<script>
+		$(function () {
+			var pull = $('#pull');
+			menu = $('nav ul');
+			menuHeight = menu.height();
+
+			$(pull).on('click', function (e) {
+				e.preventDefault();
+
+				menu.slideToggle();
+			});
+
+			$(window).resize(function () {
+				var w = $(window).width();
+				if (w > 320 && menu.is(':hidden')) {
+					menu.removeAttr('style');
+				}
+			});
+		});
+	</script>
+</head>
+
+<body data-category="management">
+	<div class="header_bg">
+		<div class="wrap">
+			<div class="header">
+				<div class="logo">
+					<a href="index.html"><img src="images/logo.png" alt=""></a>
+				</div>
+				<div class="h_right">
+					<!--start menu -->
+					<ul class="menu">
+						<li><a href="index.html">首页</a></li> |
+						<li><a href="phone.html">手机</a></li> |
+						<li><a href="laptop.html">笔记本</a></li> |
+						<li><a href="pods.html">耳机</a></li> |
+						<li class="managementpage active"><a href="#">管理</a></li>
+						<div class="clear"></div>
+					</ul>
+					<div class="search-container">
+						<input type="text" id="search-input" placeholder="搜索文章...">
+						<button id="search-button">
+							<i class="iconfont">&#xe693;</i> <!-- 搜索图标 -->
+						</button>
+					</div>
+					<div class="user">
+						<!-- 用户登录按钮 -->
+						<span class="iconfont" id="useraccount">&#xe63a;</span>&nbsp;&nbsp;&nbsp;
+						<!-- 退出按钮 -->
+						<span class="iconfont" id="exit">&#xe892;</span>
+					</div>
+				</div>
+				<div class="clear"></div>
+				<div class="top-nav">
+					<nav class="clearfix">
+						<ul>
+							<li><a href="index.html">首页</a></li>
+							<li><a href="phone.html">手机</a></li>
+							<li><a href="laptop.html">笔记本</a></li>
+							<li><a href="pods.html">耳机</a></li>
+							<li class="managementpage active"><a href="#">管理</a></li>
+						</ul>
+						<a href="#" id="pull">菜单</a>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--start main -->
+	<div class="main_bg">
+		<div class="wrap">
+			<div class="container">
+				<!-- 选项卡按钮 -->
+				<div class="tabs-header">
+					<button class="tab-button active" data-target="#tab-publish">发布文章</button>
+					<button class="tab-button" data-target="#tab-manage">管理文章</button>
+					<button class="tab-button" data-target="#tab-favorites">收藏列表</button>
+				</div>
+
+				<!-- 发布文章选项卡 -->
+				<div id="tab-publish" class="tab-content active">
+					<h3>发布文章</h3>
+					<div class="form-group">
+						<label for="title">标题：</label>
+						<input type="text" id="title" placeholder="请输入标题">
+						<span class="error-message" id="error-title"></span>
+					</div>
+					<div class="form-group">
+						<label for="content">正文：</label>
+						<textarea id="content" placeholder="请输入正文"></textarea>
+						<span class="error-message" id="error-content"></span>
+					</div>
+					<div class="form-group">
+						<label for="category">分类：</label>
+						<select id="category">
+							<option value="">请选择分类</option>
+							<option value="phone">手机</option>
+							<option value="laptop">笔记本</option>
+							<option value="pods">耳机</option>
+						</select>
+						<span class="error-message" id="error-category"></span>
+					</div>
+					<div class="form-group">
+						<label for="image">上传图片：</label>
+						<input type="file" id="image" accept="image/*">
+						<div id="image-preview">图片预览将在这里显示</div>
+						<span class="error-message" id="error-image"></span>
+					</div>
+					<!-- 附件上传部分 -->
+					<div class="form-group">
+						<label for="attachments">上传附件：</label>
+						<div id="uploader-container">
+							<button id="pickfiles" class="btn-upload">选择文件</button>
+							<div id="filelist" class="file-list"></div>
+						</div>
+						<span class="error-message" id="error-attachments"></span>
+					</div>
+					<!-- 提交按钮 -->
+					<button id="submit-article" class="btn-submit">提交文章</button>
+				</div>
+
+				<!-- 管理文章选项卡 -->
+				<div id="tab-manage" class="tab-content">
+					<h3 class="management-header">文章管理</h3>
+					<!-- 文章管理列表 -->
+					<ul class="article-list">
+
+					</ul>
+
+				</div>
+				<!-- 收藏列表选项卡 -->
+				<div id="tab-favorites" class="tab-content">
+					<h3 class="management-header">收藏文章</h3>
+					<ul class="article-list">
+						<!-- 保持与文章管理相同的列表结构 -->
+						<li>
+							<div class="article-info">
+								<div class="article-title">收藏的示例文章</div>
+								<div class="article-meta">
+									<span class="article-category">分类：手机</span>
+									<span class="favorite-time">收藏时间：2024-03-20</span>
+								</div>
+							</div>
+							<div class="article-actions">
+								<button class="btn-view">查看</button>
+								<button class="btn-unfavorite">取消收藏</button>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--start main -->
+	<div class="footer_bg">
+		<div class="wrap">
+			<div class="footer">
+				<div class="copy">
+					<p class="link"><span>Copyright &copy; 2024.Company name All rights reserved.</p>
+				</div>
+				<div class="f_nav">
+					<ul>
+						<li><a href="index.html">首页</a></li>
+						<li><a href="phone.html">手机</a></li>
+						<li><a href="laptop.html">笔记本</a></li>
+						<li><a href="pods.html">耳机</a></li>
+						<li class="active managementpeage"><a href="#">管理</a></li>
+					</ul>
+				</div>
+				<div class="soc_icons">
+					<ul>
+						<li><a class="icon1" href="#"></a></li>
+						<li><a class="icon2" href="#"></a></li>
+						<li><a class="icon3" href="#"></a></li>
+						<li><a class="icon4" href="#"></a></li>
+						<li><a class="icon5" href="#"></a></li>
+						<div class="clear"></div>
+					</ul>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+	</div>
+	<!-- 编辑对话框 -->
+	<div id="edit-modal" style="display: none;">
+		<div class="edit-form">
+			<h3>编辑文章</h3>
+			<input type="hidden" id="edit-article-id"> <!-- 隐藏字段存储文章 ID -->
+			<div class="form-row">
+				<div class="form-group">
+					<label for="edit-title">标题：</label>
+					<input type="text" id="edit-title" placeholder="请输入文章标题">
+				</div>
+				<div class="form-group">
+					<label for="edit-category">分类：</label>
+					<select id="edit-category">
+						<option value="phone">手机</option>
+						<option value="laptop">笔记本</option>
+						<option value="pods">耳机</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="edit-content">正文：</label>
+				<textarea id="edit-content" placeholder="请输入文章内容"></textarea>
+			</div>
+			<div class="form-row">
+				<div class="form-group">
+					<label for="edit-image">图片：</label>
+					<input type="file" id="edit-image" accept="image/*">
+					<div id="edit-image-preview">图片预览将在这里显示</div>
+				</div>
+				<div class="form-group">
+					<label for="edit-attachments">附件信息：</label>
+					<div id="edit-uploader-container">
+						<!-- <button id="edit-pickfiles" class="btn-upload">选择文件</button> -->
+						<div id="edit-filelist" class="file-list"></div>
+					</div>
+					<!-- 附件信息展示区域 -->
+					<div id="edit-attachments" class="attachments-container">
+						<!-- 附件信息将动态填充到这里 -->
+					</div>
+				</div>
+			</div>
+			<div class="button-container">
+				<button id="save-edit">保存修改</button>
+				<button id="cancel-edit">取消</button>
+			</div>
+		</div>
+	</div>
+	<!-- 弹出框 -->
+	<div id="custom-popup" class="popup">
+		<div class="popup-content">
+			<p id="popup-message">这是提示信息</p>
+			<button id="popup-close">确定</button>
+		</div>
+	</div>
+
+
+
+</body>
+
+</html>

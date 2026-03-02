@@ -1,0 +1,233 @@
+﻿<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>文章管理系统</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<script src="js/jquery.min.js"></script>
+	<!--start slider -->
+	<link rel="stylesheet" href="css/fwslider.css" media="all">
+	<script src="js/jquery-ui.min.js"></script>
+	<script src="js/css3-mediaqueries.js"></script>
+	<!-- 引入js -->
+	<script src="js/js.js"></script>
+	<script src="js/loadArticles.js"></script>
+	<script src="js/lunbo.js"></script>
+
+	<!--end slider -->
+	<!---strat-date-piker---->
+	<link rel="stylesheet" href="css/jquery-ui.css" />
+	<!-- 阿里巴巴矢量图标 -->
+	<link rel="stylesheet" href="//at.alicdn.com/t/c/font_3819262_sw3qiuugttc.css">
+	<!-- 引入css -->
+	<link rel="stylesheet" href="/css/css.css">
+	<script src="js/jquery-ui.js"></script>
+	<script>
+		$(function () {
+			$("#datepicker,#datepicker1").datepicker();
+		});
+	</script>
+	<!---/End-date-piker---->
+	<link type="text/css" rel="stylesheet" href="css/JFFormStyle-1.css" />
+	<script type="text/javascript" src="js/JFCore.js"></script>
+	<script type="text/javascript" src="js/JFForms.js"></script>
+	<!-- Set here the key for your domain in order to hide the watermark on the web server -->
+	<script type="text/javascript">
+		(function () {
+			JC.init({
+				domainKey: ''
+			});
+		})();
+	</script>
+	<!--nav-->
+	<script>
+		$(function () {
+			var pull = $('#pull');
+			menu = $('nav ul');
+			menuHeight = menu.height();
+
+			$(pull).on('click', function (e) {
+				e.preventDefault();
+				menu.slideToggle();
+			});
+
+			$(window).resize(function () {
+				var w = $(window).width();
+				if (w > 320 && menu.is(':hidden')) {
+					menu.removeAttr('style');
+				}
+			});
+		});
+	</script>
+</head>
+
+<body data-category="index">
+	<!-- start header -->
+	<div class="header_bg">
+		<div class="wrap">
+			<div class="header">
+				<div class="logo">
+					<a href="index.html"><img src="images/logo.png" alt=""></a>
+				</div>
+				<div class="h_right">
+					<!--start menu -->
+					<ul class="menu">
+						<li class="active"><a href="index.html">首页</a></li> |
+						<li><a href="phone.html">手机</a></li> |
+						<li><a href="laptop.html">笔记本</a></li> |
+						<li><a href="pods.html">耳机</a></li> |
+						<li class="managementpeage"><a href="#">管理</a></li>
+						<li class="ai"><a href="ai.html">ai</a></li>
+						<div class="clear"></div>
+					</ul>
+					<div class="search-container">
+						<input type="text" id="search-input" placeholder="搜索文章...">
+						<button id="search-button">
+							<i class="iconfont">&#xe693;</i> <!-- 搜索图标 -->
+						</button>
+					</div>
+					
+					<div class="user">
+						<!-- 用户登录按钮 -->
+						<span class="iconfont" id="useraccount">&#xe63a;</span>&nbsp;&nbsp;&nbsp;
+						<!-- 退出按钮 -->
+						<span class="iconfont" id="exit">&#xe892;</span>
+					</div>
+				</div>
+				<div class="clear"></div>
+				<div class="top-nav">
+					<nav class="clearfix">
+						<ul>
+							<li class="active"><a href="index.html">首页</a></li>
+							<li><a href="phone.html">手机</a></li>
+							<li><a href="laptop.html">笔记本</a></li>
+							<li><a href="pods.html">耳机</a></li>
+							<li class="managementpeage"><a href="#">管理</a></li>
+						<li class="ai"><a href="ai.html">ai</a></li>
+
+						</ul>
+						<a href="#" id="pull">菜单</a>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!----start-images-slider---->
+	<div class="images-slider">
+		<!-- start slider -->
+		<div class="slider-container">
+			<div class="slide">
+				<!-- Slide image -->
+				<img src="images/slider-bg.jpg" alt="" />
+				<!-- /Slide image -->
+				<!-- Texts container -->
+				<div class="slide_content">
+					<div class="slide_content_wrap">
+						<!-- Text title -->
+						<h4 class="title"><i class="bg"></i>闲聊数码站</h4>
+						<h5 class="title1"><i class="bg"></i>聊数码，探未来——尽在闲聊数码站！</h5>
+						<!-- /Text title -->
+					</div>
+				</div>
+				<!-- /Texts container -->
+			</div>
+			<!-- /Duplicate to create more slides -->
+			<div class="slide">
+				<img src="images/slider-bg.jpg" alt="" />
+				<div class="slide_content">
+					<div class="slide_content_wrap">
+						<!-- Text title -->
+						<h4 class="title"><i class="bg"></i>捕捉科技脉动，专注数码热点！</h4>
+						<h5 class="title1"><i class="bg"></i>手机、笔记本、耳机，尽享数码精华！</h5>
+						<!-- /Text title -->
+					</div>
+				</div>
+			</div>
+			<!--/slide -->
+			<button class="prev">&#10094;</button>
+			<button class="next">&#10095;</button>
+			<!-- 添加指示器 -->
+			<div class="slider-indicators">
+				<span class="indicator active"></span>
+				<span class="indicator"></span>
+			</div>
+		</div>
+		<!--/slider -->
+	</div>
+	<!--start main -->
+	<div class="main_bg">
+		<div class="wrap">
+			<!--start grids_of_3 -->
+			<div class="grids_of_3"  id="newphone">
+				<!-- 新增类别容器 -->
+				<div class="category-header">
+					<h3>手机板块新帖</h3>
+				</div>
+				
+
+				<div class="clear"></div>
+			</div>
+			<div class="grids_of_3" id="newlaptop">
+				<!-- 新增类别容器 -->
+				<div class="category-header">
+					<h3>笔记本板块新帖</h3>
+				</div>
+				
+
+				<div class="clear"></div>
+			</div>
+			<div class="grids_of_3" id="newpods">
+				<!-- 新增类别容器 -->
+				<div class="category-header">
+					<h3>耳机板块新帖</h3>
+				</div>
+				
+
+				<div class="clear"></div>
+			</div>
+		</div>
+	</div>
+	<!--start main -->
+	<div class="footer_bg">
+		<div class="wrap">
+			<div class="footer">
+				<div class="copy">
+					<p class="link"><span>Copyright &copy; 2024.Company name All rights reserved.</p>
+				</div>
+				<div class="f_nav">
+					<ul>
+						<li class="active"><a href="index.html">首页</a></li>
+						<li><a href="phone.html">手机</a></li>
+						<li><a href="laptop.html">笔记本</a></li>
+						<li><a href="pods.html">耳机</a></li>
+						<li class="managementpeage"><a href="#">管理</a></li>
+						<li class="ai"><a href="ai.html">ai</a></li>
+
+					</ul>
+				</div>
+				<div class="soc_icons">
+					<ul>
+						<li><a class="icon1" href="#"></a></li>
+						<li><a class="icon2" href="#"></a></li>
+						<li><a class="icon3" href="#"></a></li>
+						<li><a class="icon4" href="#"></a></li>
+						<li><a class="icon5" href="#"></a></li>
+						<div class="clear"></div>
+					</ul>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+	</div>
+	<!-- 弹出框 -->
+	<div id="custom-popup" class="popup">
+		<div class="popup-content">
+			<p id="popup-message">这是提示信息</p>
+			<button id="popup-close">确定</button>
+		</div>
+	</div>
+</body>
+
+</html>

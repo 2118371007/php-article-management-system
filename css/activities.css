@@ -1,0 +1,58 @@
+/* 父容器，使用 Flexbox 实现左右布局 */
+.wrap {
+    display: flex;
+    justify-content: space-between; /* 两边对齐 */
+    gap: 20px; /* 主内容和侧边栏的间距 */
+}
+
+/* 主内容部分 */
+.main {
+    flex: 3; /* 主内容占 3/4 宽度 */
+    padding: 20px;
+    background-color: #f7f7f7;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 侧边栏部分 */
+.sidebar {
+    flex: 1; /* 侧边栏占 1/4 宽度 */
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h4 {
+    margin: 10px 0 5px;
+}
+
+.sidebar input, .sidebar textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.sidebar input[type="submit"] {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.sidebar input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* 动态布局（屏幕宽度小于 768px 时） */
+@media only screen and (max-width: 768px) {
+    .wrap {
+        flex-direction: column; /* 主内容和侧边栏垂直排列 */
+    }
+
+    .main, .sidebar {
+        flex: none;
+        width: 100%; /* 占据全宽 */
+    }
+}

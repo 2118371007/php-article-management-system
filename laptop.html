@@ -1,0 +1,171 @@
+﻿<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>笔记本</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<!-- 引入js -->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/js.js"></script>
+	<script src="js/loadArticles.js"></script>
+
+
+	<!-- 阿里巴巴矢量图标 -->
+	<link rel="stylesheet" href="//at.alicdn.com/t/c/font_3819262_sw3qiuugttc.css">
+	<!-- 引入css -->
+	<link rel="stylesheet" href="/css/css.css">
+	<link type="text/css" rel="stylesheet" href="css/JFFormStyle-1.css" />
+	<script type="text/javascript" src="js/JFCore.js"></script>
+	<script type="text/javascript" src="js/JFForms.js"></script>
+	<!-- Set here the key for your domain in order to hide the watermark on the web server -->
+	<script type="text/javascript">
+		(function () {
+			JC.init({
+				domainKey: ''
+			});
+		})();
+	</script>
+	<!--nav-->
+	<script>
+		$(function () {
+			var pull = $('#pull');
+			menu = $('nav ul');
+			menuHeight = menu.height();
+
+			$(pull).on('click', function (e) {
+				e.preventDefault();
+				menu.slideToggle();
+			});
+
+			$(window).resize(function () {
+				var w = $(window).width();
+				if (w > 320 && menu.is(':hidden')) {
+					menu.removeAttr('style');
+				}
+			});
+		});
+	</script>
+	<script src="js/js.js"></script>
+</head>
+
+<body data-category="laptop">
+	<!-- start header -->
+	<div class="header_bg">
+		<div class="wrap">
+			<div class="header">
+				<div class="logo">
+					<a href="index.html"><img src="images/logo.png" alt=""></a>
+				</div>
+				<div class="h_right">
+					<!--start menu -->
+					<ul class="menu">
+						<li><a href="index.html">首页</a></li> |
+						<li><a href="phone.html">手机</a></li> |
+						<li class="active"><a href="laptop.html">笔记本</a></li> |
+						<li><a href="pods.html">耳机</a></li> |
+						<li class="managementpeage"><a href="#">管理</a></li>
+						<div class="clear"></div>
+					</ul>
+					<div class="search-container">
+						<input type="text" id="search-input" placeholder="搜索文章...">
+						<button id="search-button">
+							<i class="iconfont">&#xe693;</i> <!-- 搜索图标 -->
+						</button>
+					</div>
+					<div class="user">
+						<!-- 用户登录按钮 -->
+						<span class="iconfont" id="useraccount">&#xe63a;</span>&nbsp;&nbsp;&nbsp;
+						<!-- 退出按钮 -->
+						<span class="iconfont" id="exit">&#xe892;</span>
+					</div>
+				</div>
+				<div class="clear"></div>
+				<div class="top-nav">
+				<nav class="clearfix">
+						<ul>
+						<li><a href="index.html">首页</a></li> 
+						<li><a href="phone.html">手机</a></li> 
+						<li class="active"><a href="laptop.html">笔记本</a></li> 
+						<li><a href="pods.html">耳机</a></li>
+						<li class="managementpeage"><a href="#">管理</a></li>
+						</ul>
+						<a href="#" id="pull">菜单</a>
+					</nav>
+				</div>
+			</div>
+		</div>
+		</div>
+	<!--start main -->
+	<div class="main_bg">
+		<div class="wrap">
+			<div class="main">
+				<!-- start main_content -->
+				
+				<div class="clear"></div>
+				<!-- end main_content -->
+
+			</div>
+			<!-- 分页控件 -->
+			<div class="pagination-container single-line">
+				<div class="pagination">
+					<button class="page-btn first-page" title="第一页">«</button>
+					<button class="page-btn prev-page" title="上一页">‹</button>
+					
+					<div class="page-numbers">
+						<!-- 页码将通过JavaScript动态生成 -->
+					</div>
+					
+					<button class="page-btn next-page" title="下一页">›</button>
+					<button class="page-btn last-page" title="最后一页">»</button>
+					
+					<div class="page-jump">
+						<span>跳转</span>
+						<input type="number" class="jump-input" min="1">
+						<button class="jump-btn">GO</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--start main -->
+	<div class="footer_bg">
+		<div class="wrap">
+			<div class="footer">
+				<div class="copy">
+					<p class="link"><span>Copyright &copy; 2024.Company name All rights reserved.</p>
+				</div>
+				<div class="f_nav">
+					<ul>
+						<li><a href="index.html">首页</a></li>
+						<li><a href="phone.html">手机</a></li>
+						<li class="active"><a href="laptop.html">笔记本</a></li>
+						<li><a href="pods.html">耳机</a></li>
+						<li class="managementpeage"><a href="#">管理</a></li>
+					</ul>
+				</div>
+				<div class="soc_icons">
+					<ul>
+						<li><a class="icon1" href="#"></a></li>
+						<li><a class="icon2" href="#"></a></li>
+						<li><a class="icon3" href="#"></a></li>
+						<li><a class="icon4" href="#"></a></li>
+						<li><a class="icon5" href="#"></a></li>
+						<div class="clear"></div>
+					</ul>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+	</div>
+	<!-- 弹出框 -->
+	<div id="custom-popup" class="popup">
+		<div class="popup-content">
+			<p id="popup-message">这是提示信息</p>
+			<button id="popup-close">确定</button>
+		</div>
+	</div>
+</body>
+
+</html>

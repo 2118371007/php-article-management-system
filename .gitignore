@@ -1,0 +1,23 @@
+# 编辑器/IDE配置文件
+.idea/
+.vscode/
+.hbuilderx/
+
+
+
+# Windows系统临时文件
+Thumbs.db
+*.tmp
+*.temp
+*.bak
+
+# PHP开发临时文件
+*.log
+*.swp
+.DS_Store  # Mac系统隐藏文件
+
+
+
+# 测试/调试文件
+tests/
+debug/
